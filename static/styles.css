@@ -1,0 +1,96 @@
+/* Base Styles */
+.navbar {
+    background-color: #130505; /* Dark red background */
+    padding: 10px;
+}
+
+.navbar-brand, .nav-link, .d-flex, .search_result_font {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-style: normal;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.popular-item, .search-result, .item-details {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.item-details img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Buttons and Links */
+.btn {
+    border: 1px solid black;
+    color: black;
+}
+
+.btn-outline-success:hover, .btn-primary:hover {
+    color: lightblue; /* Text color on hover */
+    background-color: white; /* Background color on hover */
+    border-color: lightblue; /* Border color on hover */
+}
+
+.btn-primary, .btn-secondary {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-style: normal;
+    color: black; /* Text color */
+    background-color: lightgray; /* Background color */
+    border-color: black; /* Border color */
+}
+
+.title-link {
+    text-decoration: none; /* Remove underline */
+    color: black;
+}
+
+.title-link:hover {
+    color: gray; /* Change color to gray on hover */
+}
+
+/* Font Styles */
+.home_font {
+    text-align: center;
+    font-family: "Great Vibes", cursive;
+    font-size: 80px;
+    color: #000;
+}
+
+.card-title, .view_text_color {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    color: #000;
+}
+
+.card-text, .no_resut_font, .add_result_font, .edit_result_font, .view_detail_font {
+    font-family: "Abel", sans-serif;
+    font-weight: 400;
+    color: #000;
+}
+
+.view_detail_font strong {
+    font-weight: 800; /* Increase the font weight */
+    text-shadow: 0 0 1px rgba(0,0,0,0.5); /* Add a subtle shadow for emphasis */
+}
+
+/* Cards and Images */
+.card-img-container {
+    overflow: hidden; /* Ensure the image stays within its container */
+    height: 250px; /* Set a fixed height for the image container */
+}
+
+.card-img-top {
+    width: 250px; /* Ensure the image fills its container */
+    height: auto; /* Make the image scale proportionally */
+}
+
+.col.text-center {
+    margin-top: 20px; /* Adjust the value as needed */
+    margin-bottom: 20px; /* Adjust the value as needed */
+}

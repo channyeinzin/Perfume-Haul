@@ -1,0 +1,72 @@
+{% extends "home.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<div class="container mt-4">
+    <h2 class="edit_result_font">Edit Perfume</h2>
+    <form action="/edit/{{ item['id'] }}" method="POST" class="edit_result_font">
+        <div class="mb-3">
+            <label for="title" class="form-label">Perfume Name:</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ item['title'] }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" required>{{ item['description'] }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="score" class="form-label">Score:</label>
+            <input type="number" id="score" name="score" class="form-control" min="0" max="10" step="0.1" value="{{ item['score'] }}" required>
+            <small class="text-muted">0 to 10 (e.g., 8.5)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="top_note" class="form-label">Top Notes:</label>
+            <input type="text" id="top_note" name="top_note" class="form-control" value="{{ item['top_note']|join(',') }}" required>
+            <small class="text-muted">Separate notes with commas (e.g., Bergamot, Lemon, Grapefruit)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="heart_note" class="form-label">Heart Notes:</label>
+            <input type="text" id="heart_note" name="heart_note" class="form-control" value="{{ item['heart_note']|join(',') }}" required>
+            <small class="text-muted">Separate notes with commas (e.g., Jasmine, Rose, Lily of the Valley)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="base_note" class="form-label">Base Notes:</label>
+            <input type="text" id="base_note" name="base_note" class="form-control" value="{{ item['base_note']|join(',') }}" required>
+            <small class="text-muted">Separate notes with commas (e.g., Sandalwood, Patchouli, Vanilla)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" class="form-control" value="{{ item['image'] }}" required>
+            <small class="text-muted">Enter the URL of the perfume image.</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="website_data_link" class="form-label">Website Data Link:</label>
+            <input type="text" id="website_data_link" name="website_data_link" class="form-control">
+            <small class="text-muted">Enter the URL of the website data related to the perfume.</small>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <!-- Updated button for discarding changes -->
+        <button type="button" class="btn btn-secondary" onclick="confirmDiscardChanges()">Discard Changes</button>
+    </form>
+</div>
+
+<script>
+    function confirmDiscardChanges() {
+        const userConfirmed = confirm("Are you sure you want to discard changes?");
+        if (userConfirmed) {
+            // Redirect to the view page without saving changes
+            window.location.href = "{{ url_for('view_item', item_id=item['id']) }}";
+        }
+        // If the user does not confirm, they continue editing
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'script.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<div class="row">
+  <div class="col m-5">
+    <h1 class="home_font">Popular Perfumes</h1>
+  </div>
+</div> 
+
+<div class="container" id="popularItems">
+  <div class="row">
+    {% for item in popular_items %}
+    <div class="col-md-4 mb-4 "> <!-- Use col-md-4 to display 3 items in a row on medium screens -->
+      <div class="card h-100">
+        <div class="card-img-container"> <!-- Container for image -->
+          <img src="{{ item.image }}" class="card-img-top img-fluid" alt="{{ item.title }}">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title ">{{item.title }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <a href="/view/{{ item.id }}" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

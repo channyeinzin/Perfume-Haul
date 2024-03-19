@@ -1,0 +1,70 @@
+{% extends "home.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'script.js') }}"></script>
+
+<div class="container mt-4">
+    {% if success_message %}
+        <div class="alert alert-success" role="alert">
+            {{ success_message }}
+        </div>
+    {% endif %}
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    
+    <h2 class="add_result_font">Add New Perfume</h2>
+    <form action="/add" method="POST" class="add_result_font">
+        <div class="mb-3">
+            <label for="title" class="form-label">Perfume Name:</label>
+            <input type="text" id="title" name="title" class="form-control">
+        </div>
+        
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="score" class="form-label">Score:</label>
+            <input type="number" id="score" name="score" class="form-control" min="0" max="10" step="0.1">
+            <small class="text-muted">0 to 10 (e.g., 8.5)</small>
+        </div>
+        
+        <div class="mb-3">
+            <label for="top_note" class="form-label">Top Notes:</label>
+            <input type="text" id="top_note" name="top_note" class="form-control">
+            <small class="text-muted">Separate notes with commas (e.g., Bergamot, Lemon, Grapefruit)</small>
+        </div>
+        
+        <div class="mb-3">
+            <label for="heart_note" class="form-label">Heart Notes:</label>
+            <input type="text" id="heart_note" name="heart_note" class="form-control">
+            <small class="text-muted">Separate notes with commas (e.g., Jasmine, Rose, Lily of the Valley)</small>
+        </div>
+        
+        <div class="mb-3">
+            <label for="base_note" class="form-label">Base Notes:</label>
+            <input type="text" id="base_note" name="base_note" class="form-control">
+            <small class="text-muted">Separate notes with commas (e.g., Sandalwood, Patchouli, Vanilla)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" class="form-control">
+            <small class="text-muted">Enter the URL of the perfume image.</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="website_data_link" class="form-label">Website Data Link:</label>
+            <input type="text" id="website_data_link" name="website_data_link" class="form-control">
+            <small class="text-muted">Enter the URL of the website data related to the perfume.</small>
+        </div>
+        
+        <input type="submit" value="Submit" class="btn btn-primary">
+        
+    </form>
+</div>
+{% endblock %}

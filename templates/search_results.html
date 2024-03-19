@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'script.js') }}"></script>
+<div class="container" id="searchResults">
+  <h2 class="search_result_font">Search Results</h2>
+  <div id="searchResultsList">
+    <!-- Search results will be loaded dynamically -->
+    {% for result in results %}
+    <div class="card">
+      <div class="card-body">
+        <div class="card-img-container"> <!-- Container for image -->
+          <img src="{{ result.image }}" class="card-img-top img-fluid" alt="{{ result.title }}"> <!-- Use result.image and result.title -->
+        </div>
+        <h5 class="card-title">{{ result.title }}</h5>
+        <p class="card-text">{{ result.description }}</p>
+        <a href="/view/{{ result.id }}" class="btn btn-primary">View Details</a>
+      </div>
+    </div>
+    {% endfor %}
+    {% if results == [] %}
+    <p class="no_resut_font">No results found for "{{ query }}"</p>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}
